@@ -49,13 +49,13 @@ Generation is completed successfully.
         [ExcludeFromCodeCoverage]
         partial void GetLastGeneratedFactoryID(ref int lastFactoryID)
         {
-            lastFactoryID = 29; // generated: equals to last used Factory.FactoryID 
+            lastFactoryID = 31; // generated: equals to last used Factory.FactoryID 
         }
 
         [ExcludeFromCodeCoverage]
         partial void ResolveGenerated(ref object service, Type serviceType, IScope scope)
         {
-            if (serviceType == typeof(WpfApp1.IMyService))
+            if (serviceType == typeof(WpfApp1.ServicesViewModel))
                 service = Create_0(this, scope);
         }
 
@@ -74,17 +74,17 @@ Generation is completed successfully.
         [ExcludeFromCodeCoverage]
         private IEnumerable<KV<object, FactoryDelegate>> ResolveManyGenerated(Type serviceType)
         {
-            if (serviceType == typeof(WpfApp1.IMyService))
+            if (serviceType == typeof(WpfApp1.ServicesViewModel))
             {
                 yield return new KV<object, FactoryDelegate>(null, Create_0);
             }
 
         }
 
-        // typeof(WpfApp1.IMyService)
+        // typeof(WpfApp1.ServicesViewModel)
         internal static object Create_0(IResolverContext r, IScope scope)
         {
-            return r.SingletonScope().GetOrAdd(1, () => new WpfApp1.MyService());
+            return r.SingletonScope().GetOrAdd(3, () => new WpfApp1.ServicesViewModel((WpfApp1.AssemblyService)r.SingletonScope().GetOrAdd(1, () => new WpfApp1.AssemblyService()), (WpfApp1.CultureService)r.SingletonScope().GetOrAdd(2, () => new WpfApp1.CultureService())));
         }
 
     }

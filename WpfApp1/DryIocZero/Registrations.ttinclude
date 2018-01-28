@@ -37,7 +37,15 @@ IContainer GetContainerWithRegistrations()
     // TODO: Add registrations
     // container.Register<IMyServive, MyService>();
 
-    container.Register<IMyService, MyService>(reuse: Reuse.Singleton, setup: Setup.With(asResolutionRoot: true));
+            container.Register<ServicesViewModel>(Reuse.Singleton, setup: Setup.With(asResolutionRoot: true));
+
+            container.RegisterMany(new[] { typeof(IMyService), typeof(IAssemblyService) }, typeof(AssemblyService), Reuse.Singleton);
+            container.RegisterMany(new[] { typeof(IMyService), typeof(ICultureService) }, typeof(CultureService), Reuse.Singleton);
+
+    foreach (var entry in container.GetServiceRegistrations())
+    {
+
+    }
 
     return container;
 }

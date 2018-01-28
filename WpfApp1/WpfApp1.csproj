@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentWPF, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentWPF.0.2.1\lib\net45\FluentWPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -68,11 +71,16 @@
     <Compile Include="DryIocZero\AsyncExecutionFlowScopeContext.cs" />
     <Compile Include="DryIocZero\Container.cs" />
     <Compile Include="DryIocZero\Container.Generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Container.Generated.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="DryIocZero\ImTools.cs" />
+    <Compile Include="ViewModels\ServicesViewModel.cs" />
+    <Compile Include="Services\AssemblyService.cs" />
+    <Compile Include="Services\CultureService.cs" />
+    <Compile Include="Services\IAssemblyService.cs" />
+    <Compile Include="Services\ICultureService.cs" />
     <Compile Include="Services\IMyService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -80,7 +88,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\MyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,17 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DryIocZero;
+using System.Diagnostics;
 using System.Windows;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        private readonly Container _container = new Container();
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var mainWindow = new MainWindow()
+            {
+                DataContext = _container.Resolve<ServicesViewModel>(),
+            };
+
+            foreach (var entry in _container.ResolveMany<IMyService>())
+            {
+                Debug.WriteLine(entry);
+            }
+
+            base.OnStartup(e);
+
+            mainWindow.Show();
+        }
     }
 }
