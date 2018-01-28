@@ -38,7 +38,7 @@ using ImTools;
 
 namespace DryIocZero
 {
-/*
+/* 
 Generation is completed successfully.
 ---------------------------------------
 
@@ -49,7 +49,7 @@ Generation is completed successfully.
         [ExcludeFromCodeCoverage]
         partial void GetLastGeneratedFactoryID(ref int lastFactoryID)
         {
-            lastFactoryID = 29; // generated: equals to last used Factory.FactoryID
+            lastFactoryID = 29; // generated: equals to last used Factory.FactoryID 
         }
 
         [ExcludeFromCodeCoverage]
@@ -60,13 +60,13 @@ Generation is completed successfully.
         }
 
         [ExcludeFromCodeCoverage]
-        partial void ResolveGenerated(ref object service, Type serviceType, object serviceKey,
+        partial void ResolveGenerated(ref object service, Type serviceType, object serviceKey, 
             Type requiredServiceType, RequestInfo preRequestParent, IScope scope)
         {
         }
 
         [ExcludeFromCodeCoverage]
-        partial void ResolveManyGenerated(ref IEnumerable<KV<object, FactoryDelegate>> services, Type serviceType)
+        partial void ResolveManyGenerated(ref IEnumerable<KV<object, FactoryDelegate>> services, Type serviceType) 
         {
             services = ResolveManyGenerated(serviceType);
         }
