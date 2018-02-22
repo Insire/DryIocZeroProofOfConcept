@@ -5,10 +5,11 @@
                          xmlns:fluentwpf="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
                          xmlns:local="clr-namespace:WpfApp1"
                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                         xmlns:service="clr-namespace:ServiceLibrary;assembly=ServiceLibrary"
                          x:Name="window"
                          Title="MainWindow"
-                         Width="525"
-                         Height="400"
+                         Width="900"
+                         Height="600"
                          mc:Ignorable="d">
 
     <Grid>
@@ -26,16 +27,48 @@
 
         <ItemsControl Grid.Row="1"
                       Grid.Column="1"
-                      ItemsSource="{Binding Items}">
+                      ItemsSource="{Binding Items}"
+                      ScrollViewer.CanContentScroll="False"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
-            <ItemsControl.ItemsPanel>
+            <!--<ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+            </ItemsControl.ItemsPanel>-->
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
+            <ItemsControl.Resources>
+                <DataTemplate DataType="{x:Type service:AsciiConverterService}">
+                    <DockPanel>
+                        <GroupBox Header="{Binding Name, StringFormat={}{0}:}">
+                            <DockPanel>
+                                <DockPanel Margin="0,5"
+                                            HorizontalAlignment="Stretch"
+                                            DockPanel.Dock="Top">
+
+                                    <Button MinWidth="50"
+                                            Padding="5"
+                                            Click="Button_Click"
+                                            Content="Run" />
+
+                                    <TextBox MinWidth="50"
+                                             Margin="5,0,0,0"
+                                             Padding="5"
+                                             Text="ImagePath"
+                                             TextChanged="TextBox_TextChanged" />
+                                </DockPanel>
+                                <Viewbox>
+                                    <ItemsControl Background="Transparent"
+                                                  BorderBrush="Transparent"
+                                                  ItemsSource="{Binding Items}" />
+                                </Viewbox>
+                            </DockPanel>
+
+                        </GroupBox>
+                    </DockPanel>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type service:CultureService}">
                     <DockPanel Height="150">
                         <GroupBox Header="{Binding Name, StringFormat={}{0}:}">
                             <DockPanel>
@@ -61,7 +94,35 @@
                         </GroupBox>
                     </DockPanel>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
+
+                <DataTemplate DataType="{x:Type service:AssemblyService}">
+                    <DockPanel Height="150">
+                        <GroupBox Header="{Binding Name, StringFormat={}{0}:}">
+                            <DockPanel>
+                                <StackPanel Margin="0,5"
+                                            HorizontalAlignment="Right"
+                                            DockPanel.Dock="Bottom"
+                                            Orientation="Horizontal">
+                                    <Button MinWidth="50"
+                                            Margin="0,0,5,0"
+                                            Padding="5"
+                                            Content="Add" />
+                                    <Button MinWidth="50"
+                                            Padding="5"
+                                            Content="Remove" />
+                                </StackPanel>
+
+                                <ListBox Background="Transparent"
+                                         BorderBrush="Transparent"
+                                         ItemsSource="{Binding Items}"
+                                         ScrollViewer.CanContentScroll="False" />
+                            </DockPanel>
+
+                        </GroupBox>
+                    </DockPanel>
+                </DataTemplate>
+
+            </ItemsControl.Resources>
 
         </ItemsControl>
 

@@ -27,6 +27,7 @@ THE SOFTWARE.
 
 
 
+
 //========================================================================================================
 // NOTE: The code below is generated automatically at compile-time and not supposed to be changed by hand.
 //========================================================================================================
@@ -49,7 +50,7 @@ Generation is completed successfully.
         [ExcludeFromCodeCoverage]
         partial void GetLastGeneratedFactoryID(ref int lastFactoryID)
         {
-            lastFactoryID = 31; // generated: equals to last used Factory.FactoryID 
+            lastFactoryID = 32; // generated: equals to last used Factory.FactoryID 
         }
 
         [ExcludeFromCodeCoverage]
@@ -84,7 +85,7 @@ Generation is completed successfully.
         // typeof(WpfApp1.ServicesViewModel)
         internal static object Create_0(IResolverContext r, IScope scope)
         {
-            return r.SingletonScope().GetOrAdd(3, () => new WpfApp1.ServicesViewModel((WpfApp1.AssemblyService)r.SingletonScope().GetOrAdd(1, () => new WpfApp1.AssemblyService()), (WpfApp1.CultureService)r.SingletonScope().GetOrAdd(2, () => new WpfApp1.CultureService())));
+            return r.SingletonScope().GetOrAdd(4, () => new WpfApp1.ServicesViewModel((ServiceLibrary.AssemblyService)r.SingletonScope().GetOrAdd(1, () => new ServiceLibrary.AssemblyService()), (ServiceLibrary.CultureService)r.SingletonScope().GetOrAdd(2, () => new ServiceLibrary.CultureService()), (ServiceLibrary.AsciiConverterService)r.SingletonScope().GetOrAdd(3, () => new ServiceLibrary.AsciiConverterService())));
         }
 
     }

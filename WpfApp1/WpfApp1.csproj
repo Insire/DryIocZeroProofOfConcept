@@ -77,11 +77,6 @@
     </Compile>
     <Compile Include="DryIocZero\ImTools.cs" />
     <Compile Include="ViewModels\ServicesViewModel.cs" />
-    <Compile Include="Services\AssemblyService.cs" />
-    <Compile Include="Services\CultureService.cs" />
-    <Compile Include="Services\IAssemblyService.cs" />
-    <Compile Include="Services\ICultureService.cs" />
-    <Compile Include="Services\IMyService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,6 +118,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Container.Generated.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">
+      <Project>{93A7A792-ABAC-4E05-A340-BB4DCA4C84F4}</Project>
+      <Name>ServiceLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

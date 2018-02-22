@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ServiceLibrary;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace WpfApp1
@@ -7,12 +8,13 @@ namespace WpfApp1
     {
         public ObservableCollection<IMyService> Items { get; }
 
-        public ServicesViewModel(IAssemblyService assemblyService, ICultureService cultureService)
+        public ServicesViewModel(IAssemblyService assemblyService, ICultureService cultureService, IAsciiConverterService converter)
         {
             Items = new ObservableCollection<IMyService>(new List<IMyService>
             {
-                assemblyService,
-                cultureService,
+                //assemblyService,
+                //cultureService,
+                converter,
             });
         }
     }

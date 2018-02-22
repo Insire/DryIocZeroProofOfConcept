@@ -1,6 +1,7 @@
 ﻿using ClassLibrary1;
 using DryIoc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ServiceLibrary;
 using System.Linq;
 
 namespace UnitTestProject1
@@ -15,7 +16,7 @@ namespace UnitTestProject1
         {
             var container = _orchestration.GetContainerWithRegistrations();
 
-            Assert.AreEqual(2, container.ResolveMany(typeof(WpfApp1.IMyService)).Count());
+            Assert.AreEqual(3, container.ResolveMany(typeof(IMyService)).Count());
         }
 
         [TestMethod]

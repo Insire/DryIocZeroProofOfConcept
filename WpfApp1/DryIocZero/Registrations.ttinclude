@@ -24,6 +24,9 @@
 <#@ assembly Name="$(ProjectDir)\bin\$(Configuration)\WpfApp1.exe" #>
 <#@ import Namespace="WpfApp1" #>
 
+<#@ assembly Name="$(ProjectDir)\bin\$(Configuration)\ServiceLibrary.dll" #>
+<#@ import Namespace="ServiceLibrary" #>
+
 <#+
 // TODO: Specify your container and registrations
 IContainer GetContainerWithRegistrations()
@@ -37,15 +40,12 @@ IContainer GetContainerWithRegistrations()
     // TODO: Add registrations
     // container.Register<IMyServive, MyService>();
 
-            container.Register<ServicesViewModel>(Reuse.Singleton, setup: Setup.With(asResolutionRoot: true));
+    container.Register<ServicesViewModel>(Reuse.Singleton, setup: Setup.With(asResolutionRoot: true));
 
-            container.RegisterMany(new[] { typeof(IMyService), typeof(IAssemblyService) }, typeof(AssemblyService), Reuse.Singleton);
-            container.RegisterMany(new[] { typeof(IMyService), typeof(ICultureService) }, typeof(CultureService), Reuse.Singleton);
+    container.RegisterMany(new[] { typeof(IMyService), typeof(IAssemblyService) }, typeof(AssemblyService), Reuse.Singleton);
+    container.RegisterMany(new[] { typeof(IMyService), typeof(ICultureService) }, typeof(CultureService), Reuse.Singleton);
 
-    foreach (var entry in container.GetServiceRegistrations())
-    {
-
-    }
+    container.RegisterMany(new[] { typeof(IMyService), typeof(IAsciiConverterService) }, typeof(AsciiConverterService), Reuse.Singleton);
 
     return container;
 }
